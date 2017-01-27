@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+  
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Languge" content="en-GB" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+
+<title>Online Member Services</title>
+<link href="/sitecss/gllbetter/global.min.css?v=63617414314" rel="stylesheet" type="text/css" />
+<link href="/sitecss/gllbetter/BaseCss.css?v=63617414314" rel="stylesheet" type="text/css" />
+<link href="/sitecss/gllbetter/Jtip.css?v=63617414314" rel="stylesheet" type="text/css" />
+<link href="/sitecss/gllbetter/LayoutCss.css?v=63617414314" rel="stylesheet" type="text/css" />
+<link href="/sitecss/gllbetter/jquery.datepick.css?v=63617414314" rel="stylesheet" type="text/css" />
+<link href="/sitecss/gllbetter/TextCss.css?v=63617414314" rel="stylesheet" type="text/css" />
+<link href="/sitecss/gllbetter/AdminButtons.css?v=63617414314" rel="stylesheet" type="text/css" />
+<link href="/sitecss/gllbetter/jquery.multiSelect.css?v=63617414314" rel="stylesheet" type="text/css" />
+<link href="/sitecss/gllbetter/Thickbox.css?v=63617414314" rel="stylesheet" type="text/css" />
+<link href="/sitecss/gllbetter/CSCCss.css?v=63617414314" rel="stylesheet" type="text/css" />
+<link href="/sitecss/gllbetter/MacroCss.css?v=63617414314" rel="stylesheet" type="text/css" />
+
+<script src="/sitescripts/jquery.min.js?v=63617414314" type="text/javascript"></script>
+<script src="/sitescripts/jquery-migrate.min.js?v=63617414314" type="text/javascript"></script>
+<script src="/sitescripts/MicrosoftAjax.js?v=63617414314" type="text/javascript"></script>
+<script src="/sitescripts/MicrosoftMvcAjax.js?v=63617414314" type="text/javascript"></script>
+<script src="/sitescripts/jquery.collapsor.js?v=63617414314" type="text/javascript"></script>
+<script src="/sitescripts/Thickbox.js?v=63617414314" type="text/javascript"></script>
+<script src="/sitescripts/Resizer.js?v=63617414314" type="text/javascript"></script>
+<script src="/sitescripts/CMSSearch.js?v=63617414314" type="text/javascript"></script>
+<script src="/sitescripts/jtip.js?v=63617414314" type="text/javascript"></script>
+<script src="/sitescripts/paRSS.js?v=63617414314" type="text/javascript"></script>
+<script src="/sitescripts/PopLink.js?v=63617414314" type="text/javascript"></script>
+
+<script src="/Scripts/knockout-3.3.0.js?v=63617414314" type="text/javascript"></script>
+<script src="/Scripts/knockout.mapping-latest.js?v=63617414314" type="text/javascript"></script>
+<script src="/Scripts/underscore.js?v=63617414314" type="text/javascript"></script>
+<script src="/Scripts/Default/jquery.cookie.js?v=63617414314" type="text/javascript"></script>
+<script src="/Scripts/Default/jquery.pager.js?v=63617414314" type="text/javascript"></script>
+
+
+
+<style>
+    .basketItemWarning {
+        padding: 5px;
+        margin-bottom: 6px;
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+        font-size: 15px;
+    }
+</style>
+
+<link href='/hillingdon_-_highgro/CustomStyleSheet.css?v=63617414314' rel='Stylesheet' type='text/css' />
+<script type='text/javascript' src='/hillingdon_-_highgro/CustomScript.js?v=63617414314'></script>
+
+
+
+
+<script type="text/javascript" src="../../scripts/legendware/testautomation.js"></script>
+
+
+  
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css' />
+</head>
+<body>
+    <!-- Google Tag Manager -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-W452ST" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-W452ST');
+</script>
+<!-- End Google Tag Manager -->
+
+<script src="/Themes/Default/Content/Shared/JS/noticesModal.viewmodel.js?v=63617414314" type="text/javascript"></script>
+<script src="/Themes/Default/Content/Shared/JS/noticesModalServices.js?v=63617414314" type="text/javascript"></script>
+
+<script type="text/javascript">
+    var CmsBaseUrl = '/hillingdon_-_highgro/account/login';
+    var GlobalConfigCurrentLocation = 'hillingdon_-_highgro';
+
+    $(document).ready(function () {
+        var noticeVM = new NoticesModalViewModel(function () {
+            tb_show("Notices", "TB_inline?height=255&width=700&inlineId=tbNotice&modal=false", "");
+            noticeVM.dismissModal();
+        });
+
+        ko.applyBindings(noticeVM, $("#tbNotice")[0]);
+        noticeVM.getNotices();
+    });
+</script>
+
+<div id="tbNotice" style="display: none">
+    <div class="tb-notice-wrapper">
+        <div class="tb-notice-content">
+            <div id="noticesList" data-bind="foreach: notices">
+                <div class="notice" data-bind="html: Notice">
+                    <b>No Notices</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/Scripts/Default/CMSCommon.js?v=63617414314" type="text/javascript"></script>
+  <form action="#" method="post" id="form1">
+  
+  <div class="header-container">
+        <div class="main-header">
+            <div class="site-container">
+                <div class="logo">
+                    <img src="/media/siteimages/better-logo.png" alt="Better Logo" />
+                </div>
+            </div>
+        </div>
+        <div class="navigation-header">
+            <div class="site-container">
+                <div id="menu">
+            
+
+<ul>
+    <li><a href="/hillingdon_-_highgro/Account/Logout"><span>Log Out</span></a></li>
+</ul>
+    
+
+
+    
+    
+          </div>
+            </div>
+        </div>
+  </div>
+    <div class="main-content">
+        <div class="site-container">
+              
+    
+
+<div id="left">
+  <div id="submenu">
+    
+  
+    
+    <ul>
+      <!-- START: BOOKINGS /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ -->
+      
+          <li><h2>Bookings</h2></li>
+          <li ><a href="/hillingdon_-_highgro/BookingsCentre/Index" >Make a Booking</a></li>
+          <li  class='selected' ><a href="/hillingdon_-_highgro/BookingsCentre/MyBookings"  class='selected' >View My Bookings</a></li>
+          
+      <!-- END: BOOKINGS /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ -->
+
+            <!-- START: ONLINE TICKETING /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ -->
+      <li>
+  <h2>Activity Tickets</h2>
+</li>
+
+
+
+<li>
+  <a href="/hillingdon_-_highgro/onlineticketing/browse">Browse Tickets</a>
+</li>
+
+      <!-- END: ONLINE TICKETING /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
+
+      <!-- START: MEMBERSHIP /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\-->
+          <li><h2>Memberships</h2></li>
+          <li ><a href="/hillingdon_-_highgro/Account/MyMemberships" >My Membership</a></li>
+      
+          <li ><a href="/hillingdon_-_highgro/Account/UnlinkMembership" >Unlink My Membership</a></li>
+          
+
+          
+      <!-- END: MEMBERSHIP /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ -->
+    
+      <!-- START: ACCOUNT /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ -->
+          <li><h2>Account</h2></li>
+          <li><a href="/hillingdon_-_highgro/Account/Logout">Log Out</a></li>
+          <li ><a href="/hillingdon_-_highgro/Account/CSC" >My Home</a></li>
+          <li ><a href="/hillingdon_-_highgro/Basket/Index" >Basket (0)</a></li>
+          <li ><a href="/hillingdon_-_highgro/Account/PersonalProfile" >My Profile</a></li>
+              <li ><a class="" href="/hillingdon_-_highgro/billsandpayments">Bills &amp; Payments</a></li>
+
+                    
+                    <li ><a href="/hillingdon_-_highgro/Account/ChangeUsername" >Change My Email</a></li>
+          <li ><a href="/hillingdon_-_highgro/Account/ChangePassword" >Change My Password</a></li>
+                          
+      <!-- END: ACCOUNT /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ -->
+
+      
+      
+    </ul>
+  </div>
+</div>
+        <div>
+          
+          
+    
+
+    <div class="formOffset">
+        <div class="formBand">
+            <img src="/media/siteimages/iconOnlineBookings.gif" alt="Online Bookings" />
+            My Bookings
+        </div>
+        <div class="formInput">
+            <div class="fieldSetWrapper">
+                <div class="fieldSetContent">
+                    <fieldset>
+                        <legend>My Bookings</legend>
+
+                        <div style="min-height: 200px; overflow: auto; padding: 0 0 15px 0;">
+                            <h5 class='TextMembers'>Group Cycle  (Highgrove)</h5><p> Instructor: Natasha (Attended)<br />Location: Studio 2<br />Date: 27 January 2017 06:45 - 07:30 </p><hr /><br /><br />
+                        </div>
+
+                        
+
+                        <div class="formSubmit">
+                            <hr />
+                            
+                            <a href="Index" class='MembersButton'>Make a Booking</a>
+                        </div>
+
+                        
+    <div>
+      <hr />
+              
+                    <h4>Add bookings to your calendar</h4>
+              <p>Click the link or copy the URL into your calendar application to have 
+            your bookings automatically added to your calendar.</p>  
+                
+      <div class="formSubmit">
+        <a href="webcal://better.legendonlineservices.co.uk/hillingdon_-_highgro/Mobile/UserBookingsCalendar?id=QW9UMmltOG54S09STDlnYmVweEp6dz09" class="MembersButton">Subscribe</a>
+      </div>
+    </div>
+    
+
+                        <div style="clear: both;"></div>
+                    </fieldset>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+          
+        </div>
+        </div>
+    </div>
+    <div class="footer-container">
+        <div class="site-container">
+            <div class="footer-details">
+                <div class="column-one"><section class="footer-about"><h1 class="eta bold-weight">About Better</h1><ul><li class="eta"><a href="/Enterprise/account/Terms?keepThis=true&amp;TB_iframe=true&amp;height=400&amp;width=800&amp;modal=true">Terms &amp; Conditions</a></li><li class="eta"><a href="http://www.gll.org" style="text-transform: initial;" target="_blank">GLL.org</a></li></ul></section></div><div class="column-two"><section class="footer-social"><h1 class="eta bold-weight">Better on Social</h1><ul><li class="twitter"><a class="icon icon-twitter" href="https://twitter.com/better_uk"><span>@BETTER</span> </a></li><li class="facebook"><a class="icon icon-facebook" href="https://www.facebook.com/BetterUK/?fref=ts" style="background-position: 41px 0px;"><span>Facebook.com/better</span> </a></li></ul><a class="icon" href="http://www.socialenterprise.org.uk/"><img alt="" src="/Enterprise/resource/image/621e1215-00c2-4e3b-8dfd-6c4d782d2e41" style="width: 116px; height: 116px;" /></a><br /><span class="icon icon-big-society"><span>Big Society Awards</span> </span></section></div>
+            </div>
+        </div>
+        <div class="footer-footer">
+            <div class="site-container">
+             <small class="iota">        Better is a registered trademark and trading name of GLL (Greenwich Leisure Limited), a charitable social enterprise and registered society under the Co-operative &amp; Community Benefit &amp; Societies Act 2014 registration no. 27793R. Registered office: Middlegate House, The Royal Arsenal, London, SE18 6SX. Inland Revenue Charity no: XR43398 VAT registration no: 219749179.      </small>
+            </div>
+        </div>
+       </div>   
+  
+  </form>
+
+</body>
+</html>
