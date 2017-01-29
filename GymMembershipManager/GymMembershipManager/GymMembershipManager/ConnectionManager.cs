@@ -50,6 +50,10 @@ namespace Shunty.GymMembershipManager
             });
             var result2 = await http.PostAsync(Consts.LoginUrl, content);
             _log.TraceFormat("Login request. Status code: {StatusCode};", result2.StatusCode);
+#if TRACE
+            var resulttext = await result2.Content.ReadAsStringAsync();
+            _log.TraceFormat("Login result content. Result: {LoginContent};", resulttext);
+#endif
             result2.EnsureSuccessStatusCode();
         }
 
