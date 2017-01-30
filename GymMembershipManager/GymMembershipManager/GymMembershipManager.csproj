@@ -51,6 +51,7 @@
     <Compile Include="GymMembershipManager\ConnectionManager.cs" />
     <Compile Include="GymMembershipManager\Consts.cs" />
     <Compile Include="GymMembershipManager\MembershipAction.cs" />
+    <Compile Include="GymMembershipManager\MyBookingsAction.cs" />
     <Compile Include="GymMembershipManager\PatternMatchers.cs" />
     <Compile Include="GymMembershipManager\Timetable.cs" />
     <Compile Include="GymMembershipManager\TimetableItem.cs" />
