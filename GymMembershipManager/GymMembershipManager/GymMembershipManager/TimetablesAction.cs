@@ -1,23 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Shunty.Logging;
 using AngleSharp.Parser.Html;
 using AngleSharp.Dom.Html;
-using System.Text.RegularExpressions;
 
 namespace Shunty.GymMembershipManager
 {
     public class TimetablesAction : MembershipAction
     {
         private static readonly ILog _log = LogProvider.For<TimetablesAction>();
-
-        private static string bookingLinkPattern = @"onclick=['\""]addBooking\((?<id>\d+)\)";
-        private static Regex bookingLinkRE = new Regex(bookingLinkPattern);
-        private static string timePattern = @"(?<fromHour>\d+):(?<fromMinute>\d+)\s*-\s*(?<toHour>\d+):(?<toMinute>\d+)";
-        private static Regex timeRE = new Regex(timePattern);
 
         public TimetablesAction(IConnectionManager manager) 
             : base(manager)
@@ -161,7 +154,7 @@ namespace Shunty.GymMembershipManager
                 return result;
             }
 
-            var match = bookingLinkRE.Match(cellText);
+            var match = PatternMatchers.BookingLinkRE.Match(cellText);
             if (match.Success)
             {
                 result = int.Parse(match.Groups["id"].Value);
@@ -180,7 +173,7 @@ namespace Shunty.GymMembershipManager
 
         private Tuple<TimeSpan, TimeSpan> GetStartEndTime(string cellText)
         {
-            var match = timeRE.Match(cellText);
+            var match = PatternMatchers.TimeRE.Match(cellText);
             if (match.Success)
             {
                 TimeSpan tFrom = new TimeSpan(int.Parse(match.Groups["fromHour"].Value), int.Parse(match.Groups["fromMinute"].Value), 0);

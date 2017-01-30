@@ -46,13 +46,16 @@
   <ItemGroup>
     <Compile Include="GymMembershipManager\ActivitiesAction.cs" />
     <Compile Include="GymMembershipManager\Activity.cs" />
+    <Compile Include="GymMembershipManager\BookedItem.cs" />
+    <Compile Include="GymMembershipManager\BookedItems.cs" />
     <Compile Include="GymMembershipManager\ConnectionManager.cs" />
     <Compile Include="GymMembershipManager\Consts.cs" />
     <Compile Include="GymMembershipManager\MembershipAction.cs" />
+    <Compile Include="GymMembershipManager\PatternMatchers.cs" />
     <Compile Include="GymMembershipManager\Timetable.cs" />
     <Compile Include="GymMembershipManager\TimetableItem.cs" />
     <Compile Include="GymMembershipManager\TimetablesAction.cs" />
-    <Compile Include="IConnectionManager.cs" />
+    <Compile Include="GymMembershipManager\IConnectionManager.cs" />
     <Compile Include="LibLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
