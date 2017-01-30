@@ -5,11 +5,11 @@ using Shunty.Logging;
 
 namespace Shunty.GymMembershipManager
 {
-    public class CancelAction : MembershipAction
+    public class CancelBookingAction : MembershipAction
     {
-        private static readonly ILog _log = LogProvider.For<CancelAction>();
+        private static readonly ILog _log = LogProvider.For<CancelBookingAction>();
 
-        public CancelAction(IConnectionManager manager) : base(manager)
+        public CancelBookingAction(IConnectionManager manager) : base(manager)
         { }
 
         public async Task<bool> CancelBooking(int bookingId)

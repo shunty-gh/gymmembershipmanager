@@ -48,7 +48,7 @@
     <Compile Include="GymMembershipManager\Activity.cs" />
     <Compile Include="GymMembershipManager\BookedItem.cs" />
     <Compile Include="GymMembershipManager\BookedItems.cs" />
-    <Compile Include="GymMembershipManager\CancelAction.cs" />
+    <Compile Include="GymMembershipManager\CancelBookingAction.cs" />
     <Compile Include="GymMembershipManager\ConnectionManager.cs" />
     <Compile Include="GymMembershipManager\Consts.cs" />
     <Compile Include="GymMembershipManager\MembershipAction.cs" />
