@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Shunty.Logging;
+
 
 namespace Shunty.GymMembershipManager
 {
@@ -13,5 +15,10 @@ namespace Shunty.GymMembershipManager
         }
 
         protected IConnectionManager Manager { get { return _manager; } }
+
+        public KeyValuePair<string, string> CreateQueryParam(string key, string value)
+        {
+            return new KeyValuePair<string, string>(key, value);
+        }
     }
 }

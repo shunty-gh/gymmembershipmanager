@@ -81,23 +81,44 @@ namespace Shunty.GymMembershipManager
             return result;
         }
 
-        public async Task<string> GetResultAsync(string url, IEnumerable<KeyValuePair<string,string>> queryParams)
+        public async Task<string> GetResultAsync(string url, IEnumerable<KeyValuePair<string,string>> queryParams, IEnumerable<KeyValuePair<string, string>> headers = null)
         {
-            var query = "";
-            bool first = true;
-            string amp = "&";
-
-            foreach (var qp in queryParams)
+            string query = "", newurl = "";
+            if (queryParams != null)
             {
-                query += $"{(first ? String.Empty : amp)}{qp.Key}={Uri.EscapeDataString(qp.Value)}";
-                first = false;
+                bool first = true;
+                string amp = "&";
+
+                foreach (var qp in queryParams)
+                {
+                    query += $"{(first ? String.Empty : amp)}{qp.Key}={Uri.EscapeDataString(qp.Value)}";
+                    first = false;
+                }
+
+                // Has the url already got parameters
+                var separator = url.Contains("?") ? "&" : "?";
+                newurl = $"{url}{separator}{query}";
             }
 
-            // Has the url already got parameters
-            var separator = url.Contains("?") ? "&" : "?";
-            var newurl = $"{url}{separator}{query}";
+            if (headers != null)
+            {
+                foreach (var header in headers)
+                {
+                    _http.DefaultRequestHeaders.Add(header.Key, header.Value);
+                }
+            }
 
-            var result = await GetResultAsync(newurl);
+            var result = await GetResultAsync(string.IsNullOrWhiteSpace(newurl) ? url : newurl);
+
+            // Remove the headers afterwards
+            if (headers != null)
+            {
+                foreach (var header in headers)
+                {
+                    _http.DefaultRequestHeaders.Remove(header.Key);
+                }
+            }
+
             return result;
         }
 
