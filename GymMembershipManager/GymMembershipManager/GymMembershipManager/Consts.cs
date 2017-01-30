@@ -14,6 +14,8 @@ namespace Shunty.GymMembershipManager
         public static readonly string ActivitySelectUrl = "/hillingdon_-_highgro/bookingscentre/activitySelect";
         public static readonly string BehavioursUrl = "/hillingdon_-_highgro/bookingscentre/behaviours";
         public static readonly string TimetableUrl = "/hillingdon_-_highgro/bookingscentre/TimeTable";
+        public static readonly string CancelUrl = "/hillingdon_-_highgro/BookingsCentre/CancelBooking";  // then add "?bookingid=12345678";
+        public static readonly string CancelConfirmationUrl = "/hillingdon_-_highgro/BookingsCentre/CancelBookingConfirmation";  // then add "?bookingid=12345678";
 
         // Hard code the club id. We should really determine this from the page
         public static readonly int ClubId = 222;
