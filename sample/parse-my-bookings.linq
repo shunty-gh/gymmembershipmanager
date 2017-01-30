@@ -38,7 +38,6 @@ async Task Main()
     // containing the instructor, <br/>, location, <br/>, date, time and a cancel link if applicable
     var result = new BookedItems();
     var current = bookings.FirstOrDefault();
-    bool first = true;
     while (current != null)
     {
         if ((current is IHtmlHeadingElement) && (current.LocalName.ToLower() == "h5"))
@@ -49,11 +48,6 @@ async Task Main()
             if (current is IHtmlParagraphElement)
             {
                 item.ParseBookingDetails(current.InnerHtml);
-//                if (first)
-//                {
-//                    current.Dump();
-//                    first = false;
-//                }
             }
         }
         current = current.NextElementSibling;
