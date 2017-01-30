@@ -10,7 +10,7 @@ namespace Shunty.GymMembershipManager
 {
     public class MyBookingsAction : MembershipAction
     {
-        private static readonly ILog _log = LogProvider.For<ActivitiesAction>();
+        private static readonly ILog _log = LogProvider.For<MyBookingsAction>();
 
         public MyBookingsAction(IConnectionManager manager) 
             : base(manager)
