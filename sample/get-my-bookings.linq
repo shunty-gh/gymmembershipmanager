@@ -38,6 +38,6 @@ public void InitialiseLogging()
         .WriteTo.Seq("http://localhost:5341");
 
     log = sconfig.CreateLogger()
-        .ForContext("SourceContext", "GymMembershipManager: Get activities sample");
+        .ForContext("SourceContext", "GymMembershipManager: Get my bookings sample");
     Log.Logger = log;
 }
