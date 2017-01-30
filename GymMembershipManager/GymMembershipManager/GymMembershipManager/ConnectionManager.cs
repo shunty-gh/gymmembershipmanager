@@ -81,6 +81,26 @@ namespace Shunty.GymMembershipManager
             return result;
         }
 
+        public async Task<string> GetResultAsync(string url, IEnumerable<KeyValuePair<string,string>> queryParams)
+        {
+            var query = "";
+            bool first = true;
+            string amp = "&";
+
+            foreach (var qp in queryParams)
+            {
+                query += $"{(first ? String.Empty : amp)}{qp.Key}={Uri.EscapeDataString(qp.Value)}";
+                first = false;
+            }
+
+            // Has the url already got parameters
+            var separator = url.Contains("?") ? "&" : "?";
+            var newurl = $"{url}{separator}{query}";
+
+            var result = await GetResultAsync(newurl);
+            return result;
+        }
+
         public async Task<HttpResponseMessage> PostAsync(string url, IEnumerable<KeyValuePair<string, string>> content)
         {
             // Assume we are already logged in - up to the user to do that

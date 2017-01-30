@@ -12,6 +12,8 @@ namespace Shunty.GymMembershipManager
 
         Task<HttpResponseMessage> GetAsync(string url);
         Task<string> GetResultAsync(string url);
+        Task<string> GetResultAsync(string url, IEnumerable<KeyValuePair<string, string>> queryParams);
+
         Task<HttpResponseMessage> PostAsync(string url, IEnumerable<KeyValuePair<string, string>> content);
         Task<string> PostResultAsync(string url, IEnumerable<KeyValuePair<string, string>> content);
     }
