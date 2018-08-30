@@ -1,6 +1,12 @@
 <Query Kind="Program">
   <Reference>&lt;RuntimeDirectory&gt;\Microsoft.VisualBasic.dll</Reference>
   <Reference Relative="..\GymMembershipManager\GymMembershipManager\bin\Debug\Shunty.GymMembershipManager.dll">D:\projects\sph\betterGym\GymMembershipManager\GymMembershipManager\bin\Debug\Shunty.GymMembershipManager.dll</Reference>
+  <Reference>&lt;RuntimeDirectory&gt;\System.Windows.Forms.dll</Reference>
+  <Reference>&lt;RuntimeDirectory&gt;\System.Security.dll</Reference>
+  <Reference>&lt;RuntimeDirectory&gt;\System.Configuration.dll</Reference>
+  <Reference>&lt;RuntimeDirectory&gt;\Accessibility.dll</Reference>
+  <Reference>&lt;RuntimeDirectory&gt;\System.Deployment.dll</Reference>
+  <Reference>&lt;RuntimeDirectory&gt;\System.Runtime.Serialization.Formatters.Soap.dll</Reference>
   <NuGetReference>Serilog</NuGetReference>
   <NuGetReference>Serilog.Enrichers.Thread</NuGetReference>
   <NuGetReference>Serilog.Sinks.LINQPad</NuGetReference>
@@ -10,6 +16,7 @@
   <Namespace>Shunty.GymMembershipManager</Namespace>
   <Namespace>System.Threading.Tasks</Namespace>
   <Namespace>Microsoft.VisualBasic</Namespace>
+  <Namespace>System.Windows.Forms</Namespace>
 </Query>
 
 // *** Watch specific activity classes and notify 
@@ -23,23 +30,29 @@ private static TimeSpan pollInterval = new TimeSpan(0, 2, 0);
 // *** ========================= ***    
 
 async Task Main()
-{    
+{
     //InitialiseLogging();
-   
+
     var result = false;
+    var waitHandle = new AutoResetEvent(false);
+    var msg = "Waiting..";
     var timer = new System.Timers.Timer(pollInterval.TotalMilliseconds);
     timer.Elapsed += async (sender, e) => {
         result = await CheckAvailability();
+        if (!result)
+            Console.Write(msg);
+        waitHandle.Set();
     };
     timer.Start();
-    
+
     // Call it straight away, before the timers first call
     result = await CheckAvailability();
-    
-    var inp = "";
-    while (!result && inp == "") 
+    Console.Write(msg);
+
+    while (!result)
     {
-        inp = Console.ReadLine();
+        Console.Write(".");
+        waitHandle.WaitOne(10000);
     }
     timer.Stop();
     
@@ -55,6 +68,7 @@ public async Task<bool> CheckAvailability()
     var pwd = Util.GetPassword("BetterGym");
     var result = false;
 
+    Console.WriteLine("");
     $"Starting new check...".Dump();
     IEnumerable<Activity> activities;
     using (var conn = ConnectionManager.CreateManager())
